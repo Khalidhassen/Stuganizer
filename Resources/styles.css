@@ -1,0 +1,42 @@
+body {
+    background-image: url('/Resources/Launching_soon.png');
+    background-repeat: no-repeat/ default;
+    background-size: 100%;
+    background-position-x: center;
+}
+
+.top-button {
+    background-color: #000000;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.top-button:hover {
+    background-color: white;
+}
+
+.lower-button {
+    position: fixed;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.lower-button2 {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.lower-button:hover {
+    background-color: white;
+}
+
+.lower-button2:hover {
+    background-color: white;
+}
