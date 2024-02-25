@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./Resources/stopwatch.css" />
+  </head>
+  <body>
+    <nav>
+        <div class="logo">STUGANIZER</div>
+        <div class="nav-items">
+            <a href="/">Home</a> <a href="/">About</a> <a href="/stopwatch.html">Stopwatch</a> <a href="/contact.html">Contact</a>
+        </div>
+      </nav>
+   <div class="stopwatch">
+    <h1>STUDY STOP WATCH</h1>
+    <h1 id="displayTime">00:00:00</h1>
+    <div class="buttons">
+        <img src="./Resources/Images/2618245.png" onclick = "watchreset()">
+        <img src="./Resources/Images/video-play-button-icon-icons-download-11.png" onclick="watchstart()">
+        <img src="./Resources/Images/4670752-200.png" onclick="watchpause()">
+    </div>
+   <div></div>
+  </body>
+</html>
+
+<script>
+
+    let[seconds, minutes, hours] = [0,0,0];
+    let displayTime = document.getElementById("displayTime");
+    let timer = null;
+
+    function stopwatch(){
+        seconds++;
+        if (seconds == 60){
+            seconds = 0;
+            minutes++;
+            if (minutes == 60){
+                minutes = 0;
+                hours++;
+            }
+        }
+        let h = hours < 10? "0" + hours : hours;
+        let m = minutes < 10? "0" + minutes : minutes;
+        let s = seconds < 10? "0" + seconds : seconds;
+
+        displayTime.innerHTML = h + ":" + m + ":" + s;
+    }
+
+    function watchstart(){
+        if (timer != null){
+        clearInterval(timer);
+        }
+        timer = setInterval(stopwatch, 1000);
+    }
+    function watchpause(){
+        clearInterval(timer);
+    }
+
+    function watchreset(){
+        clearInterval(timer);
+        [seconds, minutes, hours] = [0,0,0];
+        displayTime.innerHTML = "00:00:00";
+    }
+</script>
