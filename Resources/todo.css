@@ -14,10 +14,8 @@
     background: var(--gradient);
     margin: 0;
     height: 100vh;
-    display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: center;
   }
 
   nav {
@@ -74,10 +72,11 @@
   .todo {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     border-radius: 2rem;
     background: var(--white);
     padding: 3rem;
+    align-content: center;
     height: 50%;
     width: 60%;
     box-shadow: 0 1rem 3rem 1rem rgba(0, 23, 71, 0.15);
