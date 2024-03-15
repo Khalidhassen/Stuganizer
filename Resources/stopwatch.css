@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Digital-7', sans-serif;
+  background-color: white;
+}
+
+nav {
+  height: 80px;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+
+.logo {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  padding: 0 1.5rem;
+}
+
+nav a:hover {
+  color: yellow;
+}
+
+.stopwatch {
+  text-align: center;
+  margin-top: 50px; /* Adjust as needed */
+  font-size: x-large;
+}
+
+.stopwatch h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #333;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.buttons img {
+  width: 50px; /* Adjust the size of buttons */
+  margin: 0 10px; /* Adjust the spacing between buttons */
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out; /* Add a smooth transition */
+}
+
+.buttons img:hover {
+  transform: scale(1.1); /* Add a slight zoom effect on hover */
+}
