@@ -14,8 +14,8 @@
         </div>
       </nav>
    <div class="stopwatch">
-    <h1>STUDY STOP WATCH</h1>
-    <h1 id="displayTime">00:00:00</h1>
+    <h1>POMODORO TIMER</h1>
+    <h1 id="displayTime">25:00</h1>
     <div class="buttons">
         <img src="./Resources/Images/2618245.png" onclick = "watchreset()">
         <img src="./Resources/Images/video-play-button-icon-icons-download-11.png" onclick="watchstart()">
@@ -27,25 +27,23 @@
 
 <script>
 
-    let[seconds, minutes, hours] = [0,0,0];
+    let[seconds, minutes] = [60,24];
     let displayTime = document.getElementById("displayTime");
     let timer = null;
 
     function stopwatch(){
-        seconds++;
-        if (seconds == 60){
-            seconds = 0;
-            minutes++;
-            if (minutes == 60){
-                minutes = 0;
-                hours++;
+        seconds--;
+        if (seconds == 0){
+            minutes--;
+            seconds = 60;
+            if (minutes == 0){
+                minutes = 5;
             }
         }
-        let h = hours < 10? "0" + hours : hours;
         let m = minutes < 10? "0" + minutes : minutes;
         let s = seconds < 10? "0" + seconds : seconds;
 
-        displayTime.innerHTML = h + ":" + m + ":" + s;
+        displayTime.innerHTML = m + ":" + s;
     }
 
     function watchstart(){
@@ -60,7 +58,7 @@
 
     function watchreset(){
         clearInterval(timer);
-        [seconds, minutes, hours] = [0,0,0];
-        displayTime.innerHTML = "00:00:00";
+        [seconds, minutes] = [60,24];
+        displayTime.innerHTML = "25:00";
     }
 </script>
