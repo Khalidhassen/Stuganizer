@@ -57,10 +57,11 @@ nav a:hover {
   border-radius: 2rem;
   background: var(--white);
   padding: 3rem;
-  height: 50%;
+  height: 50%; 
   width: 60%;
   box-shadow: 0 1rem 3rem 1rem rgba(0, 23, 71, 0.15);
   max-width: 30rem;
+  overflow-y: auto; 
 }
 
 h2 {
@@ -144,13 +145,12 @@ input[type="checkbox"]:checked::before {
 }
 
 .scroll {
-  height: 15rem;
-  scrollbar-width: thin;
-  padding-left: 0; 
+  padding-left: 0;
+  scroll-behavior: smooth; 
 }
 
 .scroll > li {
-  list-style: none; 
+  list-style: none;
 }
 
 .scroll::-webkit-scrollbar {
