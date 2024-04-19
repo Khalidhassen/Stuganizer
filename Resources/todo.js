@@ -21,6 +21,12 @@ function addTask() {
     saveToLocalStorage();
     todoInput.value = "";
     displayTasks();
+
+    addButton.classList.add('clicked');
+
+    setTimeout(function() {
+      addButton.classList.remove('clicked');
+    }, 300);
   }
 }
 
@@ -93,3 +99,4 @@ function deleteAllTasks() {
 function saveToLocalStorage() {
   localStorage.setItem("todo", JSON.stringify(todo));
 }
+
