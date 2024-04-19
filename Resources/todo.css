@@ -146,6 +146,11 @@ input[type="checkbox"]:checked::before {
 .scroll {
   height: 15rem;
   scrollbar-width: thin;
+  padding-left: 0; 
+}
+
+.scroll > li {
+  list-style: none; 
 }
 
 .scroll::-webkit-scrollbar {
