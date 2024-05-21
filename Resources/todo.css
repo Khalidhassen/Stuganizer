@@ -23,24 +23,23 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
-}
-
-.logo {
-  color:#fff;
-  font-size: 1.5rem;
-  font-weight: bold;
-  font-style: italic;
   padding: 0 2rem;
 }
 
-nav a {
+.logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.nav-items a {
   text-decoration: none;
   color: white;
   padding: 0 1.5rem;
 }
 
-nav a:hover {
+.nav-items a:hover {
   color: yellow;
 }
 

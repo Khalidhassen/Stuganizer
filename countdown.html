@@ -1,64 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="Resources/stopwatch.css" />
-  </head>
-  <body>
+</head>
+<body>
     <nav>
         <div class="logo">STUGANIZER</div>
         <div class="nav-items">
             <a href="/">Home</a><a href="/stopwatch.html">Stopwatch</a><a href="/countdown.html">Pomdoro</a> <a href="/todo.html">To Do List</a> <a href="/contact.html">Contact</a>
         </div>
-      </nav>
-   <div class="stopwatch">
-    <h1>POMODORO TIMER</h1>
-    <h1 id="displayTime">25:00</h1>
-    <div class="buttons">
-        <img src="./Resources/Images/2618245.png" onclick = "watchreset()">
-        <img src="./Resources/Images/video-play-button-icon-icons-download-11.png" onclick="watchstart()">
-        <img src="./Resources/Images/4670752-200.png" onclick="watchpause()">
+    </nav>
+    <div class="stopwatch">
+        <h1>POMODORO TIMER</h1>
+        <h1 id="displayTime">25:00</h1>
+        <button id="settingsButton">Settings</button>
+        <div class="buttons">
+            <img src="./Resources/Images/2618245.png" onclick="watchreset()">
+            <img src="./Resources/Images/video-play-button-icon-icons-download-11.png" onclick="watchstart()">
+            <img src="./Resources/Images/4670752-200.png" onclick="watchpause()">
+        </div>
     </div>
-   <div></div>
-  </body>
+
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeSettingsButton">&times;</span>
+            <h2>Set Timer</h2>
+            <select id="timeSelect">
+                <option value="5">5 minutes</option>
+                <option value="10">10 minutes</option>
+                <option value="15">15 minutes</option>
+                <option value="20">20 minutes</option>
+                <option value="25" selected>25 minutes</option>
+                <option value="30">30 minutes</option>
+                <option value="35">35 minutes</option>
+                <option value="40">40 minutes</option>
+                <option value="45">45 minutes</option>
+                <option value="50">50 minutes</option>
+                <option value="55">55 minutes</option>
+                <option value="60">60 minutes</option>
+            </select>
+            <button id="setTimeButton">Set Time</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
 
 <script>
 
-    let[seconds, minutes] = [60,24];
-    let displayTime = document.getElementById("displayTime");
-    let timer = null;
+let [seconds, minutes] = [0, 25];
+let displayTime = document.getElementById("displayTime");
+let timer = null;
 
-    function stopwatch(){
-        seconds--;
-        if (seconds == 0){
-            minutes--;
-            seconds = 60;
-            if (minutes == 0){
-                minutes = 5;
-            }
-        }
-        let m = minutes < 10? "0" + minutes : minutes;
-        let s = seconds < 10? "0" + seconds : seconds;
+function stopwatch() {
+  if (seconds == 0 && minutes == 0) {
+    clearInterval(timer);
+    alert("Time's up!");
+  } else {
+    if (seconds == 0) {
+      minutes--;
+      seconds = 59;
+    } else {
+      seconds--;
+    }
+    let m = minutes < 10 ? "0" + minutes : minutes;
+    let s = seconds < 10 ? "0" + seconds : seconds;
+    displayTime.innerHTML = m + ":" + s;
+  }
+}
 
-        displayTime.innerHTML = m + ":" + s;
-    }
+function watchstart() {
+  if (timer != null) {
+    clearInterval(timer);
+  }
+  timer = setInterval(stopwatch, 1000);
+}
 
-    function watchstart(){
-        if (timer != null){
-        clearInterval(timer);
-        }
-        timer = setInterval(stopwatch, 1000);
-    }
-    function watchpause(){
-        clearInterval(timer);
-    }
+function watchpause() {
+  clearInterval(timer);
+}
 
-    function watchreset(){
-        clearInterval(timer);
-        [seconds, minutes] = [60,24];
-        displayTime.innerHTML = "25:00";
-    }
+function watchreset() {
+  clearInterval(timer);
+  minutes = parseInt(timeSelect.value);
+  seconds = 0;
+  displayTime.innerHTML = minutes < 10 ? "0" + minutes + ":00" : minutes + ":00";
+}
+
+function setCustomTime() {
+  let selectedTime = parseInt(timeSelect.value);
+  if (!isNaN(selectedTime) && selectedTime > 0) {
+    minutes = selectedTime;
+    seconds = 0;
+    displayTime.innerHTML = minutes < 10 ? "0" + minutes + ":00" : minutes + ":00";
+    closeModal();
+  } else {
+    alert("Please select a valid time.");
+  }
+}
+
+function openModal() {
+  settingsModal.style.display = 'block';
+}
+
+function closeModal() {
+  settingsModal.style.display = 'none';
+}
+
+document.getElementById('setTimeButton').addEventListener('click', setCustomTime);
+document.getElementById('settingsButton').addEventListener('click', openModal);
+document.getElementById('closeSettingsButton').addEventListener('click', closeModal);
+
+// Close the modal when the user clicks outside of it
+window.addEventListener('click', (event) => {
+  if (event.target === settingsModal) {
+    closeModal();
+  }
+});
+
+// Initialize display
+watchreset();
+
 </script>
