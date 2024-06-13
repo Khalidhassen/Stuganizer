@@ -1,20 +1,9 @@
-:root {
-  --dark: #001747;
-  --grey: #b1bacb;
-  --grey-border: rgba(210, 210, 210, 0.75);
-  --black: #000000;
-  --white: #ffffff;
-}
-
-body {
-  background-color: black;
+* {
+  box-sizing: border-box;
   margin: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande','Lucida Sans', Arial, sans-serif;
+  padding: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
 }
 
 nav {
@@ -44,11 +33,11 @@ nav {
 }
 
 .btn {
-  color: var(--white);
+  color: white;
   font-size: 1.1rem;
   padding: 0.7rem 1.5rem;
   border-radius: 0.3rem;
-  background-color: var(--black);
+  background-color: black;
   border: none;
   position: absolute;
   right: 0.5rem;
@@ -57,13 +46,14 @@ nav {
 
 .todo {
   border-radius: 2rem;
-  background: var(--white);
+  background: white;
   padding: 3rem;
-  height: 50%; 
-  width: 60%;
+  height: 100%; 
+  width: 50%;
   box-shadow: 0 1rem 3rem 1rem rgba(0, 23, 71, 0.15);
-  max-width: 30rem;
+  max-width: 1000px;
   overflow-y: auto; 
+  margin: auto auto;
 }
 
 h2 {
@@ -80,14 +70,14 @@ h2 {
 
 .input-field {
   width: 100%;
-  border: 0.06rem solid #d2d2d2bf;
+  border: 0.06rem solid black;
   border-radius: 0.5rem;
   padding: 1.25rem;
   font-size: 1rem;
 }
 
 input[type="text"]::placeholder {
-  color: var(--grey);
+  color: gray;
 }
 
 .todo-container {
@@ -95,19 +85,24 @@ input[type="text"]::placeholder {
   gap: 1rem;
 }
 
-#todoList p {
-  display: flex;
-  gap: 1rem;
-  color: var(--dark);
-  align-items: center;
+
+.deleteButton {
+  color: white;
+  font-size: 1.1rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 0.3rem;
+  background-color: black;
+  border: none;
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
 }
 
-#todoList .disabled {
-  color: #8f98a8;
-}
-
-.disabled {
-  text-decoration: line-through;
+.scroll {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-size: 1.2rem;
+  list-style-type: none;
 }
 
 input[type="checkbox"] {
@@ -118,52 +113,17 @@ input[type="checkbox"] {
 input[type="checkbox"]::before {
   content: "\2713";
   display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  font-size: 1.7rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1rem;
   text-align: center;
-  border: 0.06rem solid var(--grey-border);
+  border: 0.3rem solid green;
   border-radius: 50%;
-  color: transparent; 
+  color: transparent;
+  margin: auto auto; 
 }
 
 input[type="checkbox"]:checked::before {
-  color: var(--white); 
+  color: white; 
   background-color: green; 
-}
-
-.counter-container {
-  height: 2rem;
-  display: flex;
-  justify-content: space-between;
-  color: var(--grey);
-}
-
-.counter-container button {
-  border: none;
-  background-color: transparent;
-  color: var(--grey);
-  font-size: 1rem;
-}
-
-.scroll {
-  padding-left: 0;
-  scroll-behavior: smooth; 
-}
-
-.scroll > li {
-  list-style: none;
-}
-
-.scroll::-webkit-scrollbar {
-  width: 0.6rem;
-}
-
-.scroll::-webkit-scrollbar-thumb {
-  background-color: var(--black);
-  border-radius: 0.5rem;
-}
-
-.scroll::-webkit-scrollbar-track {
-  display: none;
 }
